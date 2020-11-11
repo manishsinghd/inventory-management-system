@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+  <head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+
+      .main-block {
+
+      margin-left:20px;
+       margin-top:100px;
+      display: flex;
+      width: 97%;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 8px 0px #666;
+      background: #fff;
+      }
+      table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+table-layout: fixed;
+  width: 100%;
+}
+
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  margin:20px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position:relative; left:20px; top:90px; right:100px;
+  box-shadow: 1px 1px 8px 0px #666;
+
+
+  cursor: pointer;
+}
+
+.button1 {padding: 10px 24px;}
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+    </style>
+      <!DOCTYPE html>
+  <body>
+
+
+
+
+
+<a class="button button1" href="{% url 'editcategories' %}">Add Category</a>
+
+<div class="main-block">
+   <div class="block-item left">
+        <h3>Manage Categories</h3>
+
+
+</form>
+       <table>
+  <tr>
+    <th>Category</th>
+    <th>Status</th>
+      <th>Delete</th>
+      <th>Edit</th>
+  </tr>
+{% for ins in object_list %}
+
+
+ <tr>
+
+    <td>
+        <a href="{% url 'bundle' ins.id %}">{{ ins.title }}</a>
+    </td>
+    <td>{{ ins.status_choice }}</td>
+    <td>
+
+        <button>
+        <a class="fa fa-trash" aria-hidden="true"href="{% url 'deletecategories' ins.id %}"></a>
+    </button>
+        <td>
+
+        <button>
+            <a class="fas fa-edit" href="{% url 'updatecategories' ins.id %}"></a>
+
+          </button>
+    </td>
+ </tr>
+           {% endfor %}
+
+       </table>
+  </div>
+<div>
+
+</div>
+
+
+
+</div>
+
+
+  </body>
+</html>
+{% endblock content %}

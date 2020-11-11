@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+  <head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+
+      .main-block {
+
+      margin-left:350px;
+       margin-top:100px;
+      display: flex;
+      width: 30%;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 8px 0px #666;
+      background: #fff;
+      }
+  </style>
+<div class="main-block">
+   <div class="block-item left">
+        <form method="post"> {% csrf_token %}
+          <h4> {{form.as_p}}</h4>
+       <input type="submit" value="save"></form>
+   </div>
+</div>
+
+
+{% endblock content %}
